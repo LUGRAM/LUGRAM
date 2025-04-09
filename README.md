@@ -1,10 +1,7 @@
-- 👋 Hi, I’m @LUGRAM
-- 👀 Interested in building cool apps, exploring security, and mastering coding challenges.
-- 🌱 Currently learning Python, algorithms, and web dev (React & Node.js).
-- 💬 Let’s collaborate on innovative projects!
-- 📫 Reach me at: [email] or on [LinkedIn].
-- 😄 Pronouns: He/Him
-- ⚡ Fun fact: I love solving algorithm puzzles!
+
+ Interested in building cool apps, exploring security, and mastering coding challenges.
+ Currently learning Python, algorithms, and web dev (React & Node.js).
+
 
 
 <!---
