@@ -1,10 +1,5 @@
-
- Interested in building cool apps, exploring security, and mastering coding challenges.
- Currently learning Python, algorithms, and web dev (React & Node.js).
-
-
-
-<!---
-LUGRAM/LUGRAM is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+Software Engineer | Flutter & Laravel Developer
+Building clean mobile & web apps with strong UX
+Passionate about scalable architectures & open-source
+Currently working on real production projects
+Tech: Flutter • Dart • Laravel • PHP • Python • Java
