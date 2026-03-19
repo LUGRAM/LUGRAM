@@ -1,0 +1,99 @@
+<svg width="860" height="260" viewBox="0 0 860 260" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes float  { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-7px); } }
+    @keyframes float2 { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-5px); } }
+    @keyframes float3 { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-9px); } }
+    @keyframes glow   { 0%,100% { opacity: 0.75; } 50% { opacity: 1; } }
+    @keyframes pulse  { 0%,100% { stroke-opacity: 0.3; } 50% { stroke-opacity: 0.9; } }
+    .n1  { animation: float  3.8s ease-in-out infinite; }
+    .n2  { animation: float2 5.2s ease-in-out infinite; }
+    .n3  { animation: float  4.5s ease-in-out infinite; }
+    .n4  { animation: float3 6.0s ease-in-out infinite; }
+    .n5  { animation: float2 4.2s ease-in-out infinite; }
+    .n6  { animation: float  5.8s ease-in-out infinite; }
+    .n7  { animation: float3 3.5s ease-in-out infinite; }
+    .n8  { animation: float2 6.5s ease-in-out infinite; }
+    .core{ animation: glow   2.8s ease-in-out infinite; }
+    .lnk { animation: pulse  3.0s ease-in-out infinite; }
+  </style>
+
+  <!-- BACKGROUND -->
+  <rect width="860" height="260" fill="#022c22" rx="12"/>
+  <line x1="0"   y1="130" x2="860" y2="130" stroke="#D1FAE5" stroke-width="0.5" opacity="0.15"/>
+  <line x1="430" y1="0"   x2="430" y2="260" stroke="#D1FAE5" stroke-width="0.5" opacity="0.15"/>
+
+  <!-- LINKS -->
+  <line class="lnk" x1="100" y1="60"  x2="430" y2="130" stroke="#10B981" stroke-width="1.5"/>
+  <line class="lnk" x1="200" y1="195" x2="430" y2="130" stroke="#22C55E" stroke-width="1.5"/>
+  <line class="lnk" x1="340" y1="48"  x2="430" y2="130" stroke="#34D399" stroke-width="1.5"/>
+  <line class="lnk" x1="340" y1="212" x2="430" y2="130" stroke="#4ADE80" stroke-width="1.5"/>
+  <line class="lnk" x1="520" y1="48"  x2="430" y2="130" stroke="#6EE7B7" stroke-width="1.5"/>
+  <line class="lnk" x1="560" y1="212" x2="430" y2="130" stroke="#86EFAC" stroke-width="1.5"/>
+  <line class="lnk" x1="700" y1="72"  x2="430" y2="130" stroke="#A7F3D0" stroke-width="1.5"/>
+  <line class="lnk" x1="760" y1="178" x2="430" y2="130" stroke="#84CC16" stroke-width="1.5"/>
+
+  <!-- NODE 1 — Flutter -->
+  <g class="n1">
+    <circle cx="100" cy="60" r="30" fill="#064E3B" stroke="#10B981" stroke-width="2"/>
+    <text x="100" y="56" text-anchor="middle" fill="#10B981" font-size="9" font-family="monospace" font-weight="bold">Flutter</text>
+    <text x="100" y="69" text-anchor="middle" fill="#6EE7B7" font-size="8" font-family="monospace">18/20</text>
+  </g>
+
+  <!-- NODE 2 — Laravel -->
+  <g class="n2">
+    <circle cx="200" cy="195" r="28" fill="#064E3B" stroke="#22C55E" stroke-width="2"/>
+    <text x="200" y="191" text-anchor="middle" fill="#22C55E" font-size="9" font-family="monospace" font-weight="bold">Laravel</text>
+    <text x="200" y="204" text-anchor="middle" fill="#6EE7B7" font-size="8" font-family="monospace">18/20</text>
+  </g>
+
+  <!-- NODE 3 — Dart -->
+  <g class="n3">
+    <circle cx="340" cy="48" r="24" fill="#065F46" stroke="#34D399" stroke-width="1.5"/>
+    <text x="340" y="44" text-anchor="middle" fill="#34D399" font-size="9" font-family="monospace">Dart</text>
+    <text x="340" y="57" text-anchor="middle" fill="#A7F3D0" font-size="8" font-family="monospace">18/20</text>
+  </g>
+
+  <!-- NODE 4 — MySQL -->
+  <g class="n4">
+    <circle cx="340" cy="212" r="24" fill="#065F46" stroke="#4ADE80" stroke-width="1.5"/>
+    <text x="340" y="208" text-anchor="middle" fill="#4ADE80" font-size="9" font-family="monospace">MySQL</text>
+    <text x="340" y="221" text-anchor="middle" fill="#A7F3D0" font-size="8" font-family="monospace">17/20</text>
+  </g>
+
+  <!-- NODE 5 — Python -->
+  <g class="n5">
+    <circle cx="520" cy="48" r="24" fill="#052e16" stroke="#6EE7B7" stroke-width="1.5"/>
+    <text x="520" y="44" text-anchor="middle" fill="#6EE7B7" font-size="9" font-family="monospace">Python</text>
+    <text x="520" y="57" text-anchor="middle" fill="#A7F3D0" font-size="8" font-family="monospace">15/20</text>
+  </g>
+
+  <!-- NODE 6 — Docker -->
+  <g class="n6">
+    <circle cx="560" cy="212" r="24" fill="#052e16" stroke="#86EFAC" stroke-width="1.5"/>
+    <text x="560" y="208" text-anchor="middle" fill="#86EFAC" font-size="9" font-family="monospace">Docker</text>
+    <text x="560" y="221" text-anchor="middle" fill="#D1FAE5" font-size="8" font-family="monospace">↑ evolving</text>
+  </g>
+
+  <!-- NODE 7 — GetX -->
+  <g class="n7">
+    <circle cx="700" cy="72" r="24" fill="#052e16" stroke="#A7F3D0" stroke-width="1.5"/>
+    <text x="700" y="68" text-anchor="middle" fill="#A7F3D0" font-size="9" font-family="monospace">GetX</text>
+    <text x="700" y="81" text-anchor="middle" fill="#D1FAE5" font-size="8" font-family="monospace">18/20</text>
+  </g>
+
+  <!-- NODE 8 — DevOps -->
+  <g class="n8">
+    <circle cx="760" cy="178" r="24" fill="#052e16" stroke="#84CC16" stroke-width="1.5"/>
+    <text x="760" y="174" text-anchor="middle" fill="#84CC16" font-size="9" font-family="monospace">DevOps</text>
+    <text x="760" y="187" text-anchor="middle" fill="#D9F99D" font-size="8" font-family="monospace">↑ evolving</text>
+  </g>
+
+  <!-- CORE — SYSTEM LUGRAM -->
+  <g class="core">
+    <circle cx="430" cy="130" r="42" fill="#011a12" stroke="#10B981" stroke-width="2.5"/>
+    <circle cx="430" cy="130" r="35" fill="none" stroke="#34D399" stroke-width="0.8" opacity="0.4"/>
+    <text x="430" y="125" text-anchor="middle" fill="#34D399" font-size="12" font-family="monospace" font-weight="bold">SYSTEM</text>
+    <text x="430" y="141" text-anchor="middle" fill="#6EE7B7" font-size="9" font-family="monospace">LUGRAM</text>
+  </g>
+</svg>
+
