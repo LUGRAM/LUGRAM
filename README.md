@@ -185,9 +185,9 @@ Constraint = design driver
 
 [![GitHub](https://img.shields.io/badge/GitHub-LUGRAM-10B981?style=for-the-badge&logo=github&logoColor=white)](https://github.com/LUGRAM)
 &nbsp;
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-22C55E?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/LUGRAM)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-22C55E?style=for-the-badge&logo=linkedin&logoColor=white)]([https://linkedin.com/in/LUGRAM](https://www.linkedin.com/in/lugram/))
 &nbsp;
-[![Email](https://img.shields.io/badge/Email-Contact-84CC16?style=for-the-badge&logo=gmail&logoColor=black)](mailto:contact@lugram.dev)
+[![Email](https://img.shields.io/badge/Email-Contact-84CC16?style=for-the-badge&logo=gmail&logoColor=black)](mailto:lugam.dev@gmail.com)
 
 </div>
 
