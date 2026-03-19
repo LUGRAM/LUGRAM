@@ -17,6 +17,7 @@ jobs:
 
       # ─────────────────────────────────────────────
       # 1. STATS GÉNÉRALES + LANGAGES
+      #    ✅ Fonctionne même avec peu d'activité
       # ─────────────────────────────────────────────
       - name: 🔵 Stats générales + Top langages
         uses: lowlighter/metrics@latest
@@ -25,7 +26,7 @@ jobs:
           filename: github/metrics.svg
           user: LUGRAM
           template: classic
-          base: header, activity, community, repositories
+          base: header, repositories          # ← "activity" retiré (plantait)
           config_timezone: Africa/Libreville
           config_display: large
           config_animations: yes
@@ -38,6 +39,7 @@ jobs:
 
       # ─────────────────────────────────────────────
       # 2. CALENDRIER ISOMÉTRIQUE 3D
+      #    ✅ Fonctionne (tu le vois déjà)
       # ─────────────────────────────────────────────
       - name: 🔵 Calendrier isométrique
         uses: lowlighter/metrics@latest
@@ -51,29 +53,24 @@ jobs:
           plugin_isocalendar_duration: full-year
 
       # ─────────────────────────────────────────────
-      # 3. HABITUDES DE CODE — CORRIGÉ
-      #    • plugin_habits_from augmenté à 500 pour éviter "not enough data"
-      #    • plugin_habits_facts: no  → désactive la section qui plante
-      #    • plugin_habits_charts_type: classic  → plus stable
+      # 3. DÉPÔTS ÉPINGLÉS
+      #    ✅ Fonctionne indépendamment de l'activité
       # ─────────────────────────────────────────────
-      - name: 🔴 Habitudes de code
+      - name: 🔴 Dépôts épinglés
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
-          filename: github/metrics.habits.svg
+          filename: github/metrics.repositories.svg
           user: LUGRAM
           base: ""
-          config_timezone: Africa/Libreville
-          plugin_habits: yes
-          plugin_habits_from: 500          # analyse jusqu'à 500 events (au lieu de 200)
-          plugin_habits_days: 30           # fenêtre élargie à 30 jours
-          plugin_habits_facts: no          # ← désactivé : cause de l'erreur sur peu d'activité
-          plugin_habits_charts: yes
-          plugin_habits_charts_type: classic
-          plugin_habits_trim: yes
+          plugin_repositories: yes
+          plugin_repositories_featured: LUGRAM/LUGRAM   # ← remplace par ton vrai repo projet
 
       # ─────────────────────────────────────────────
-      # 4. TOPICS (starred topics visibles sur profil)
+      # 4. TOPICS ÉTOILÉS
+      #    ✅ Basé sur les topics que tu étoiles sur GitHub
+      #    → Va sur github.com/topics et étoile des topics
+      #      (flutter, laravel, dart, php, docker, devops...)
       # ─────────────────────────────────────────────
       - name: 🔴 Topics
         uses: lowlighter/metrics@latest
@@ -83,25 +80,25 @@ jobs:
           user: LUGRAM
           base: ""
           plugin_topics: yes
-          plugin_topics_limit: 24
-          plugin_topics_mode: icons        # affiche les icônes de tes topics GitHub étoilés
+          plugin_topics_limit: 20
+          plugin_topics_mode: icons
           plugin_topics_sort: stars
 
       # ─────────────────────────────────────────────
-      # 5. ACHIEVEMENTS — CORRIGÉ
-      #    • plugin_achievements_secrets: no  → n'affiche pas les achievements privés
-      #    • plugin_achievements_display: compact  → plus stable que "detailed"
-      #    • Nécessite scope read:user dans le PAT
+      # 5. PROFIL COMPLET (header + repos + langages combinés)
+      #    ✅ Remplacement de habits + achievements
       # ─────────────────────────────────────────────
-      - name: 🟡 Achievements
+      - name: 🟡 Profil étendu
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
-          filename: github/metrics.achievements.svg
+          filename: github/metrics.profile.svg
           user: LUGRAM
           base: ""
-          plugin_achievements: yes
-          plugin_achievements_threshold: C    # affiche C et au-dessus
-          plugin_achievements_secrets: no     # ← désactivé : évite l'erreur de permissions
-          plugin_achievements_display: compact
-          plugin_achievements_limit: 6        # limite à 6 pour éviter le timeout
+          config_timezone: Africa/Libreville
+          plugin_languages: yes
+          plugin_languages_limit: 6
+          plugin_languages_details: percentage
+          plugin_languages_sections: most-used, recently-used
+          plugin_stars: yes                   # ← tes repos étoilés
+          plugin_stars_limit: 4
