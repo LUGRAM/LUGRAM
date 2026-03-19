@@ -1,12 +1,9 @@
 name: 📊 GitHub Metrics — LUGRAM
 
 on:
-  # Mise à jour automatique chaque jour à 00h00 UTC
   schedule:
     - cron: "0 0 * * *"
-  # Mise à jour manuelle depuis l'onglet Actions
   workflow_dispatch:
-  # Mise à jour à chaque push sur main
   push:
     branches: ["main", "master"]
 
@@ -20,25 +17,18 @@ jobs:
 
       # ─────────────────────────────────────────────
       # 1. STATS GÉNÉRALES + LANGAGES
-      #    → github/metrics.svg
       # ─────────────────────────────────────────────
       - name: 🔵 Stats générales + Top langages
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
           filename: github/metrics.svg
-
-          # Paramètres utilisateur
           user: LUGRAM
           template: classic
           base: header, activity, community, repositories
-
-          # Apparence
           config_timezone: Africa/Libreville
           config_display: large
           config_animations: yes
-
-          # Plugin : Top langages
           plugin_languages: yes
           plugin_languages_limit: 8
           plugin_languages_threshold: 2%
@@ -46,100 +36,72 @@ jobs:
           plugin_languages_sections: most-used
           plugin_languages_colors: github
 
-          # Plugin : Activité récente
-          plugin_activity: yes
-          plugin_activity_limit: 5
-          plugin_activity_days: 14
-          plugin_activity_filter: push, pr, issue, release
-
       # ─────────────────────────────────────────────
-      # 2. CALENDRIER DE CONTRIBUTIONS (isometric 3D)
-      #    → github/metrics.isocalendar.svg
+      # 2. CALENDRIER ISOMÉTRIQUE 3D
       # ─────────────────────────────────────────────
-      - name: 🔵 Calendrier isométrique 3D
+      - name: 🔵 Calendrier isométrique
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
           filename: github/metrics.isocalendar.svg
-
           user: LUGRAM
           base: ""
           config_timezone: Africa/Libreville
-
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
 
       # ─────────────────────────────────────────────
-      # 3. HABITUDES DE CODE (heures, jours, commits)
-      #    → github/metrics.habits.svg
+      # 3. HABITUDES DE CODE — CORRIGÉ
+      #    • plugin_habits_from augmenté à 500 pour éviter "not enough data"
+      #    • plugin_habits_facts: no  → désactive la section qui plante
+      #    • plugin_habits_charts_type: classic  → plus stable
       # ─────────────────────────────────────────────
       - name: 🔴 Habitudes de code
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
           filename: github/metrics.habits.svg
-
           user: LUGRAM
           base: ""
           config_timezone: Africa/Libreville
-
           plugin_habits: yes
-          plugin_habits_from: 200
-          plugin_habits_days: 14
-          plugin_habits_facts: yes
+          plugin_habits_from: 500          # analyse jusqu'à 500 events (au lieu de 200)
+          plugin_habits_days: 30           # fenêtre élargie à 30 jours
+          plugin_habits_facts: no          # ← désactivé : cause de l'erreur sur peu d'activité
           plugin_habits_charts: yes
+          plugin_habits_charts_type: classic
           plugin_habits_trim: yes
 
       # ─────────────────────────────────────────────
-      # 4. TOPICS & TECHNOLOGIES MAÎTRISÉES
-      #    → github/metrics.topics.svg
+      # 4. TOPICS (starred topics visibles sur profil)
       # ─────────────────────────────────────────────
-      - name: 🔴 Topics & Technologies
+      - name: 🔴 Topics
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
           filename: github/metrics.topics.svg
-
           user: LUGRAM
           base: ""
-
           plugin_topics: yes
           plugin_topics_limit: 24
-          plugin_topics_mode: icons
+          plugin_topics_mode: icons        # affiche les icônes de tes topics GitHub étoilés
           plugin_topics_sort: stars
 
       # ─────────────────────────────────────────────
-      # 5. DÉPÔTS ÉPINGLÉS (projets mis en avant)
-      #    → github/metrics.repositories.svg
-      # ─────────────────────────────────────────────
-      - name: 🔴 Dépôts épinglés
-        uses: lowlighter/metrics@latest
-        with:
-          token: ${{ secrets.METRICS_TOKEN }}
-          filename: github/metrics.repositories.svg
-
-          user: LUGRAM
-          base: ""
-
-          plugin_repositories: yes
-          plugin_repositories_featured: LUGRAM/ESchoolPay
-
-      # ─────────────────────────────────────────────
-      # 6. RÉSUMÉ DE PROFIL (achievements + stats clés)
-      #    → github/metrics.achievements.svg
+      # 5. ACHIEVEMENTS — CORRIGÉ
+      #    • plugin_achievements_secrets: no  → n'affiche pas les achievements privés
+      #    • plugin_achievements_display: compact  → plus stable que "detailed"
+      #    • Nécessite scope read:user dans le PAT
       # ─────────────────────────────────────────────
       - name: 🟡 Achievements
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
           filename: github/metrics.achievements.svg
-
           user: LUGRAM
           base: ""
-
           plugin_achievements: yes
-          plugin_achievements_threshold: C
-          plugin_achievements_secrets: yes
-          plugin_achievements_display: detailed
-          plugin_achievements_limit: 0
-          
+          plugin_achievements_threshold: C    # affiche C et au-dessus
+          plugin_achievements_secrets: no     # ← désactivé : évite l'erreur de permissions
+          plugin_achievements_display: compact
+          plugin_achievements_limit: 6        # limite à 6 pour éviter le timeout
